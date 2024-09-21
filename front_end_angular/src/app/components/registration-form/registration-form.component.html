@@ -1,0 +1,34 @@
+<div class="container">
+  <form
+    class="registration-form container__registration-form"
+    (submit)="onSubmit($event)"
+  >
+    <h2 class="registration-form__title">
+      Digite seu apelido para entrar na sala de bate-papo:
+    </h2>
+    <mat-form-field class="registration-form__input-field">
+      <mat-label>Apelido</mat-label>
+      <input
+        type="text"
+        matInput
+        [formControl]="username"
+        placeholder="Ex. Bob"
+      />
+      @if (this.username.hasError('required')) {
+      <mat-error>Seu nome está <strong>inválido.</strong></mat-error>
+      } @if (this.username.hasError('minlength')) {
+      <mat-error
+        >É necessário pelo menos <strong>3 caracteres</strong></mat-error
+      >
+      }
+    </mat-form-field>
+    <button
+      mat-flat-button
+      class="registration-form__button"
+      type="submit"
+      color="primary"
+    >
+      Conectar
+    </button>
+  </form>
+</div>

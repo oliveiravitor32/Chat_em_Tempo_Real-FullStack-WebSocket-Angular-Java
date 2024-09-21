@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.registration-form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  padding: 40px;
+}
