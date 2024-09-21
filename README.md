@@ -8,9 +8,9 @@ O objetivo deste projeto é servir como uma ferramenta de estudo e prática na c
 Ao longo do desenvolvimento, foram exploradas diversas tecnologias e conceitos, promovendo um aprendizado aprofundado.
 
 ## 🔧 Tecnologias Utilizadas
-- Frontend: Angular 17.3.12
-- Backend: Java 21
-- Comunicação em Tempo Real: Servidor WebSocket
+- Frontend: __Angular 17.3.12__
+- Backend: __Java 21__
+- Comunicação em Tempo Real: __Servidor WebSocket__
 
 ## 🚀 Recursos principais:
 - Navegação de página única.
