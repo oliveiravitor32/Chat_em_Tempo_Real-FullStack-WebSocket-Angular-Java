@@ -9,10 +9,12 @@ import { IChatMessage } from '../interfaces/chat-message.interface';
   providedIn: 'root',
 })
 export class WebsocketService {
+  // Instância da conexão WebSocket
   socketClient: any = null;
 
   constructor() {}
 
+  // Cria conexão com o servidor WebSocket
   connect(username: String) {
     let ws = new SockJS('http://localhost:8080/ws');
     this.socketClient = Stomp.over(ws);
@@ -24,6 +26,7 @@ export class WebsocketService {
     );
   }
 
+  // Tratamento para caso de sucesso na conexão com o servidor
   onConnect(username: String): any {
     // Se inscrevendo em tópico publico
     this.socketClient.subscribe('/topic/public', this.onMessageReceived);
@@ -38,14 +41,18 @@ export class WebsocketService {
         type: MessageTypeEnum.JOIN,
       })
     );
+
+    // Alterar a rota para página de chat
   }
 
+  // Aviso de erro para o usuário em caso de falha em se conectar com o servidor
   onError(): any {
     alert(
       'Falha ao conectar com o servidor WebSocket. Por favor recarregue a página e tente novamente!'
     );
   }
 
+  // Envia mensagem para o servidor
   sendMessage(chatMessage: IChatMessage) {
     chatMessage.type = MessageTypeEnum.CHAT;
 
@@ -58,6 +65,7 @@ export class WebsocketService {
     }
   }
 
+  // Tratamento para mensagens recebidas do servidor
   onMessageReceived(payload: any): any {
     const message = JSON.parse(payload.body);
     console.log(message);
