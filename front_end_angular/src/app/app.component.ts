@@ -1,22 +1,44 @@
 import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 import SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'ws_front_end';
 
-  username: String = 'Guest';
   socketClient: any = null;
 
-  connect() {
+  username: FormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+
+  onSubmit() {
+    const IS_USERNAME_VALID = this.username.valid;
+    if (!IS_USERNAME_VALID) {
+      console.log('invalid');
+      return;
+    }
+
     let ws = new SockJS('http://localhost:8080/ws');
     this.socketClient = Stomp.over(ws);
 
@@ -35,7 +57,11 @@ export class AppComponent {
     this.socketClient.send(
       '/app/chat.addUser',
       {},
-      JSON.stringify({ sender: this.username, content: '', type: 'JOIN' })
+      JSON.stringify({
+        sender: this.username.value,
+        content: '',
+        type: 'JOIN',
+      })
     );
   }
 
@@ -50,7 +76,7 @@ export class AppComponent {
 
     if (message && this.socketClient) {
       const chatMessage = {
-        sender: this.username,
+        sender: this.username.value,
         content: message,
         type: 'CHAT',
       };
