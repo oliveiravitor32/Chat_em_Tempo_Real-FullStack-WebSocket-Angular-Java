@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RegistrationFormComponent } from '../../components/registration-form/registration-form.component';
+import { WebsocketService } from '../../services/websocket.service';
 
 @Component({
   selector: 'app-register',
@@ -8,4 +9,10 @@ import { RegistrationFormComponent } from '../../components/registration-form/re
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent {}
+export class RegisterComponent {
+  constructor(private readonly websocket: WebsocketService) {}
+
+  onSubmitForm(username: string) {
+    this.websocket.connect(username);
+  }
+}
