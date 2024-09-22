@@ -1,0 +1,35 @@
+.container {
+  &__chat {
+    margin: 0 auto;
+  }
+}
+
+.chat {
+  max-width: 800px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  &__container-messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(114, 112, 112);
+  }
+
+  &__message {
+    display: inline-block;
+    padding: 5px;
+
+    &--bg-color--green {
+      background-color: green;
+    }
+
+    &--bg-color--dark-gray {
+      background-color: rgb(85, 84, 84);
+    }
+  }
+}
