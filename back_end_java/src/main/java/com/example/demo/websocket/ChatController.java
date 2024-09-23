@@ -25,6 +25,7 @@ public class ChatController {
             @Payload ChatMessage message,
             SimpMessageHeaderAccessor headerAccessor
     ) {
+        // Armazena nome de usuário à sua sessão
         headerAccessor.getSessionAttributes().put("username", message.getSender());
 
         // Altera conteúdo da mensagem de entrada de usuário no servidor
