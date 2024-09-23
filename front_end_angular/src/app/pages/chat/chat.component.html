@@ -1,23 +1,46 @@
-<div class="container">
-  <mat-card class="chat container__chat" appearance="outlined">
+<div class="main-container">
+  <mat-card class="chat main-container__chat" appearance="outlined">
     <mat-card-header>
       <mat-card-title class="chat__title">Sala de Bate-Papo</mat-card-title>
     </mat-card-header>
     <mat-card-content class="chat__message-list">
+      @for (message of messages; track $index) {
       <div
-        class="message-box message-box--bg-color--green chat__message-box--bg-color--green"
+        class="message-box"
+        appUserMessageStyle
+        [message]="message"
+        [username]="username"
       >
-        <div class="message-box__username">meu usuário</div>
-        <div class="message-box__message">mensagem própria</div>
+        <div class="message-box__username">{{ message.sender }}</div>
+        <div class="message-box__message">{{ message.content }}</div>
       </div>
-      <div class="message-box message-box--bg-color--dark-gray">
-        <div class="message-box__username">outro usuário</div>
-        <div class="message-box__message">mensagem do usuário</div>
-      </div>
+      }
     </mat-card-content>
-    <mat-card-actions>
-      <!-- Contruir input aqui -->
-      <button mat-button color="primary">LIKE</button>
+    <mat-card-actions class="container-form">
+      <form
+        class="send-message-form container__send-message-form"
+        (submit)="onSendMessage($event)"
+      >
+        <mat-form-field class="send-message-form__textarea-mat-field">
+          <mat-label>Mensagem</mat-label>
+          <textarea
+            class="send-message-form__textarea"
+            matInput
+            [formControl]="typedMessage"
+            placeholder="Digite sua mensagem..."
+          ></textarea>
+        </mat-form-field>
+
+        <button
+          mat-fab
+          color="primary"
+          class="send-message-form__button"
+          type="submit"
+          aria-label="Enviar mensagem"
+        >
+          <mat-icon>send</mat-icon>
+        </button>
+      </form>
     </mat-card-actions>
   </mat-card>
 </div>

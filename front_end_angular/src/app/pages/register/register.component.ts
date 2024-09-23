@@ -10,9 +10,9 @@ import { WebsocketService } from '../../services/websocket.service';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  constructor(private readonly websocket: WebsocketService) {}
+  constructor(private readonly websocketService: WebsocketService) {}
 
   onSubmitForm(username: string) {
-    this.websocket.connect(username);
+    this.websocketService.connect(username);
   }
 }

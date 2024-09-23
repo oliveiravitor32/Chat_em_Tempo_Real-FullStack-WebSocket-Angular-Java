@@ -1,4 +1,4 @@
-.container {
+.main-container {
   &__chat {
     margin: 0 auto;
   }
@@ -18,7 +18,9 @@
     flex-direction: column;
     padding: 10px 20px;
     width: 100%;
-    background-color: rgb(114, 112, 112);
+    background-color: #f2f2f2;
+    background-image: url(../../../assets/background-chat-page.svg);
+    background-size: 30%;
   }
 
   &__message-box--bg-color--green {
@@ -53,5 +55,25 @@
   }
 
   &__text {
+  }
+}
+
+.container-form {
+  width: 100%;
+}
+
+.send-message-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__textarea-mat-field {
+    width: 100%;
+    border-radius: 10px !important;
+  }
+
+  &__textarea {
+    resize: none;
   }
 }
