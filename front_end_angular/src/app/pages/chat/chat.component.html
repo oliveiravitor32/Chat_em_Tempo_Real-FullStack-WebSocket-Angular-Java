@@ -28,6 +28,7 @@
             matInput
             [formControl]="typedMessage"
             placeholder="Digite sua mensagem..."
+            (keydown)="onKeyDown($event)"
           ></textarea>
         </mat-form-field>
 

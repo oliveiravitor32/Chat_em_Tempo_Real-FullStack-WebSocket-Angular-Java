@@ -57,9 +57,21 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.receivedMessagesSubscription.add(subscription);
   }
 
-  onSendMessage(event: SubmitEvent) {
-    // Evita recarregamento da página
-    event.preventDefault();
+  // Método para evitar a quebra de linha com a tecla Enter sozinha
+  onKeyDown(event: KeyboardEvent) {
+    // Verifica se foi precionada a tecla Enter e não combinada com a tecla Shift
+    // Com Shift + Enter o evento de quebra de linha ocorre normalmente
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      this.onSendMessage();
+    }
+  }
+
+  // Enviar mensagem
+  onSendMessage(event?: SubmitEvent) {
+    // Evita recarregamento da página, se for acionada pelo botão de submit
+    // Event pode não exister se o método for chamado manualmento pelo onKeyDown()
+    event?.preventDefault();
 
     const message: IChatMessage = {
       sender: this.username,

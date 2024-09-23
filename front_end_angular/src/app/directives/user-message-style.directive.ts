@@ -50,12 +50,12 @@ export class UserMessageStyleDirective implements OnChanges {
 
     // Classe de estilo para mensagem do tipo "JOIN" (entrou)
     if (IS_JOIN_MESSAGE) {
-      classes.push('message-box--message-type-join');
+      classes.push('message-box--message-type--join');
     }
 
     // Classe de estilo para mensagem do tipo "LEAVE" (saiu)
     if (IS_LEAVE_MESSAGE) {
-      classes.push('message-box--message-type-leave');
+      classes.push('message-box--message-type--leave');
     }
 
     // Define as classes no host
