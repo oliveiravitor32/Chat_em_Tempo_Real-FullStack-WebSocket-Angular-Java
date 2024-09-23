@@ -33,10 +33,6 @@ export class UserMessageStyleDirective implements OnChanges {
 
     const IS_LEAVE_MESSAGE = this.message.type === MessageTypeEnum.LEAVE;
 
-    console.log('my user:', this.user);
-    console.log('self message:', this.message.sender);
-    console.log('type message:', this.message.type);
-
     // Classe de estilo para mensagem própria
     if (IS_SELF_MESSAGE) {
       classes.push(
