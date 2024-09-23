@@ -42,7 +42,7 @@ export class WebsocketService {
 
     // Se inscrevendo em tópico publico
     this.socketClient.subscribe(
-      '/topic/public',
+      '/chat/public',
       this.onMessageReceived.bind(this)
     );
 
