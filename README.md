@@ -38,6 +38,20 @@ Para rodar o aplicativo localmente, siga os passos abaixo:
     ```bash
    npx ng serve
     ```
+    
+### Backend
+1. Navegue até a pasta do backend:
+   ```bash
+   cd backend
+   ```
+2. Compile e execute a aplicação:
+    ```bash
+   ./mvnw spring-boot:run
+    ```
+    
+## 📖 Uso
+
+Após iniciar o aplicativo, acesse __http://localhost:4200__ em seu navegador.
 
 <h2 id="license">Licença 📃 </h2>
 
