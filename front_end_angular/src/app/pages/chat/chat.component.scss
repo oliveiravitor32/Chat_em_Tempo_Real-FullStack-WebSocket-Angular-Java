@@ -39,6 +39,14 @@
     background-color: rgb(85, 84, 84);
   }
 
+  &--message-type--join {
+    background-color: yellow;
+  }
+
+  &--message-type--leave {
+    background-color: red;
+  }
+
   &__username {
     font-size: 18px;
     font-weight: bold;
