@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebSocketTrainingApplication {
+public class RealTimeChatWebSocketApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebSocketTrainingApplication.class, args);
+		SpringApplication.run(RealTimeChatWebSocketApplication.class, args);
 	}
 
 }
