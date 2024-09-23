@@ -14,12 +14,12 @@ import { IChatMessage } from '../interfaces/chat-message.interface';
 })
 export class UserMessageStyleDirective implements OnChanges {
   @Input({ required: true }) message!: IChatMessage;
-  @Input({ required: true }) username!: string;
+  @Input({ required: true }) user!: string;
 
   @HostBinding('class') hostClasses = '';
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['message'] && changes['username']) {
+    if (changes['message'] && changes['user']) {
       this.setClasses();
     }
   }
@@ -27,13 +27,13 @@ export class UserMessageStyleDirective implements OnChanges {
   private setClasses() {
     const classes = [];
 
-    const IS_SELF_MESSAGE = this.message.sender === this.username;
+    const IS_SELF_MESSAGE = this.message.sender === this.user;
 
     const IS_JOIN_MESSAGE = this.message.type === MessageTypeEnum.JOIN;
 
     const IS_LEAVE_MESSAGE = this.message.type === MessageTypeEnum.LEAVE;
 
-    console.log('my user:', this.username);
+    console.log('my user:', this.user);
     console.log('self message:', this.message.sender);
     console.log('type message:', this.message.type);
 

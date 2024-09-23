@@ -6,6 +6,7 @@ import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import { MessageTypeEnum } from '../enums/message-type.enum';
 import { IChatMessage } from '../interfaces/chat-message.interface';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,9 +18,10 @@ export class WebsocketService {
   // Observer para mensagens recebidas
   private receivedMessages$ = new Subject<IChatMessage>();
 
-  private username: string = '';
-
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly userService: UserService
+  ) {}
 
   // Cria conexão com o servidor WebSocket
   connect(username: string) {
@@ -36,7 +38,7 @@ export class WebsocketService {
   // Tratamento para caso de sucesso na conexão com o servidor
   onConnect(username: string): any {
     // Define usuário
-    this.username = username;
+    this.userService.setUser(username);
 
     // Se inscrevendo em tópico publico
     this.socketClient.subscribe(
@@ -62,7 +64,7 @@ export class WebsocketService {
   // Aviso de erro para o usuário em caso de falha em se conectar com o servidor
   onError(): any {
     alert(
-      'Falha ao conectar com o servidor WebSocket. Por favor recarregue a página e tente novamente!'
+      'Falha na conexão com o servidor WebSocket. Por favor recarregue a página e tente novamente!'
     );
   }
 
@@ -83,25 +85,10 @@ export class WebsocketService {
   onMessageReceived(payload: any): any {
     let message: IChatMessage = JSON.parse(payload.body);
 
-    //console.log('console log message: ', message);
-
-    // Cria mensagem padrão para teste caso não receba uma mensagem completa
-    // if (true) {
-    //   message = {
-    //     sender: 'BOB',
-    //     content: 'HEELLO',
-    //     type: MessageTypeEnum.CHAT,
-    //   };
-    // }
-
     this.receivedMessages$.next(message);
   }
 
   getReceivedMessages(): Observable<any> {
     return this.receivedMessages$.asObservable();
-  }
-
-  getUsername(): string {
-    return this.username;
   }
 }

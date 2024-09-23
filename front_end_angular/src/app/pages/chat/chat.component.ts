@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { UserMessageStyleDirective } from '../../directives/user-message-style.directive';
 import { MessageTypeEnum } from '../../enums/message-type.enum';
 import { IChatMessage } from '../../interfaces/chat-message.interface';
+import { UserService } from '../../services/user.service';
 import { WebsocketService } from '../../services/websocket.service';
 import { ChatMessagesList } from '../../types/chat-messages-list';
 
@@ -38,15 +39,18 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   receivedMessagesSubscription = new Subscription();
 
-  username: string = 'BOB';
+  user: string = '';
 
   typedMessage: FormControl = new FormControl('', [Validators.required]);
 
-  constructor(private readonly websocketService: WebsocketService) {}
+  constructor(
+    private readonly websocketService: WebsocketService,
+    private readonly userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    // Obtendo nome de usuário
-    this.username = this.websocketService.getUsername();
+    // Obtendo usuário nome de usuário
+    this.user = this.userService.getUser();
 
     // Cria subscrição para mensagens recebidas do servidor
     const subscription = this.websocketService
@@ -74,7 +78,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     event?.preventDefault();
 
     const message: IChatMessage = {
-      sender: this.username,
+      sender: this.user,
       content: this.typedMessage.value,
       type: MessageTypeEnum.CHAT,
     };
