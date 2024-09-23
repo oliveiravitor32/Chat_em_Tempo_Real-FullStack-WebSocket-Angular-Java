@@ -19,8 +19,8 @@ Ao longo do desenvolvimento, foram exploradas diversas tecnologias e conceitos, 
 
 ## Prévia
 <div style="display: flex, width: 100%">
-    <img src="./utils-preview-imgs/preview-1" width="45%" height="auto" margin="0 auto"/>
-    <img src="./utils-preview-imgs/preview-2" width="45%" height="auto" margin="0 auto"/>
+    <img src="./utils_preview_imgs/preview-1" width="45%" height="auto" margin="0 auto"/>
+    <img src="./utils_preview_imgs/preview-2" width="45%" height="auto" margin="0 auto"/>
 </div>
 
 ## 🛠️ Instalação e Execução
