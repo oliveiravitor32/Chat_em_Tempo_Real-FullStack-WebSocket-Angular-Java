@@ -17,6 +17,28 @@ Ao longo do desenvolvimento, foram exploradas diversas tecnologias e conceitos, 
 - Mensagens Instantâneas: Comunicação em tempo real entre os usuários.
 - Página responsiva.
 
+## 🛠️ Instalação e Execução
+
+Para rodar o aplicativo localmente, siga os passos abaixo:
+
+### Frontend
+1. Navegue até a pasta do frontend:
+   ```bash
+   cd frontend
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Inicie o servidor (Obs: ):
+   ```bash
+   ng serve
+   ```
+   Se você não possuir o Angular CLI instalado globalmente use:
+    ```bash
+   npx ng serve
+    ```
+
 <h2 id="license">Licença 📃 </h2>
 
 Este projeto esta sob a licença [MIT](./LICENSE)
