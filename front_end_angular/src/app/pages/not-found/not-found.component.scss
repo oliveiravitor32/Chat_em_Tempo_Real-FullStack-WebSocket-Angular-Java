@@ -1,0 +1,25 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  padding: 40px;
+
+  &__title {
+  }
+
+  &__text {
+    color: #ff4081;
+    font-weight: bold;
+  }
+
+  &__text:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
