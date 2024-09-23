@@ -30,7 +30,7 @@ Para rodar o aplicativo localmente, siga os passos abaixo:
    ```bash
    npm install
    ```
-3. Inicie o servidor (Obs: ):
+3. Inicie o servidor (Obs: É necessário ter o Angular CLI):
    ```bash
    ng serve
    ```
