@@ -21,6 +21,12 @@ Ao longo do desenvolvimento, foram exploradas diversas tecnologias e conceitos, 
 
 Para rodar o aplicativo localmente, siga os passos abaixo:
 
+Clone este repositório:
+
+```bash
+  git clone https://github.com/oliveiravitor32/Chat_em_Tempo_Real-FullStack-WebSocket-Angular-Java.git
+```
+
 ### Frontend
 1. Navegue até a pasta do frontend:
    ```bash
